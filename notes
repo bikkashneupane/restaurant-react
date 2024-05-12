@@ -1,0 +1,13 @@
+1. What is cdn?
+
+2. What is crossorigin?
+
+3. What is React?
+   react is a JS library for building user interface(frontend)
+   Library is a pre-written code snippets
+
+4. What is React Element
+   It is a object that makes HTML element(Browser Understandable)
+   ReactElement(object==>HTML(Browser understandable))
+
+5. {} is a place where you can give attribute to the class
