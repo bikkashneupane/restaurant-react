@@ -13,3 +13,32 @@
    ReactElement(object==>HTML(Browser understandable))
 
 5. {} is a place where you can give attribute to the class
+
+==========================================================================
+
+6. package.json is a configuration for npm
+   It is also called dependencies.
+
+7. 2 types of Dependencies:
+
+   1. Dev --> required duing developing phase
+   2. Normal --> used in production
+
+8. npm install -D parcel
+   here, D means npm is installing this package as Dev dependency
+
+==========================================================================
+
+# React.createElement => ReactElementt => JS-Object => HTMLElement(render)
+
+const heading = React.createElement("h2", { id: "blue" }, "namaste react");
+
+# JSX (transpiled before it reaches the JS) - PARCEL -BABEL
+
+# Babel (JS-Complier/ Transpiler) converts JSX into React element
+
+# JSX => React.createElement => ReactElementt => JS-Object => HTMLElement(render)
+
+const jsxheading = <h1 id="heading">namaste react using JSX</h1>;
+
+==========================================================================
