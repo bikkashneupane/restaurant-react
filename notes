@@ -42,3 +42,13 @@ const heading = React.createElement("h2", { id: "blue" }, "namaste react");
 const jsxheading = <h1 id="heading">namaste react using JSX</h1>;
 
 ==========================================================================
+
+React Uses ===> Reconcilition Algorithm ( React Fibre ) (Introduced in React 16)
+
+(React Fibre) React uses Diff Algorithm to find out the old virtual DOM and new virtual DOM, and update the actual DOM.
+
+Why React is fast?
+React is fast beacuse it is doing efficient DOM manipulation by the help of virtual DOM and using diff algorithm that comes with React Reconcilition Algorithm/ React Fibre.
+
+Monolith
+Microservice Architecture
