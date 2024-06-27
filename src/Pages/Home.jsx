@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { CDN_URL, SWIGGY_API } from "../utils/constants";
-import { CustomCard } from "./CustomCard";
-import { Shimmer } from "./Shimmer";
+import { SWIGGY_API } from "../utils/constants";
+import { CustomCard } from "../components/CustomCard";
+import { Shimmer } from "../layout/Shimmer";
 
-export const Body = () => {
+export const Home = () => {
   const [resturantList, setRestaurantList] = useState([]);
   const [filteredResList, setFilteredResList] = useState([]);
 
@@ -15,21 +15,20 @@ export const Body = () => {
     try {
       const res = await fetch(SWIGGY_API);
       const { data } = await res.json();
-      console.log(data);
-      setRestaurantList(
+
+      console.log(
         data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );
+      setRestaurantList(
+        data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      );
       setFilteredResList(
-        data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );
     } catch (error) {
       console.log(error);
     }
   };
-
-  if (resturantList.length === 0) {
-    return <Shimmer />;
-  }
 
   return resturantList.length === 0 ? (
     <Shimmer />
@@ -67,14 +66,7 @@ export const Body = () => {
 
       <div className="card-container">
         {filteredResList?.map((item) => (
-          <CustomCard
-            key={item?.info?.id}
-            title={item?.info?.name}
-            cuisines={item?.info?.cuisines}
-            avgRating={item?.info?.avgRating}
-            deliveryTime={item?.info?.sla?.deliveryTime}
-            imageURL={`${CDN_URL}${item?.info?.cloudinaryImageId}`}
-          />
+          <CustomCard key={item?.info?.id} item={item} />
         ))}
       </div>
     </>
