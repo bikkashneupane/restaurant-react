@@ -1,7 +1,5 @@
 # namaste react in depth
 
-a
-
 # Parcel
 
 www.parceljs.org
