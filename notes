@@ -52,3 +52,64 @@ React is fast beacuse it is doing efficient DOM manipulation by the help of virt
 
 Monolith
 Microservice Architecture
+
+# Class Based Component
+
+- How the react class component renders
+  (following methods are called in order)
+
+  - constructor
+  - render
+  - componentDidMount
+
+- componentDidMount is used to call an API call
+- later replaced with useEffect in functional component
+
+- Multiple child components in a parent then this is how the mounting works in react
+
+  - Parent Constructor
+  - Parent Render
+
+    - Child - 1 - Constrctor
+    - Child - 1 - Render
+
+    - Child - 2 - Constrctor
+    - Child - 2 - Render
+
+   <DOM updated in a single Batch>
+
+  - Child - 1 - componentDidMount
+  - Child - 1 - componentDidMount
+
+  - Parent componentDidMount
+
+# Why Child 1 componentDidMount not called after its render completion?
+
+- React optimises the render when multiple child components are present.
+- This is how react makes the application fast.
+- DOM is updated in a single batch rather than multiple batched in commit phase.
+
+# 2 phases
+
+1.  Render Phase -> constructor and render
+2.  Commit Phase -> Actual DOM updates, and component did mount
+
+# Mounting, Updating then Unmounting
+
+# ---- MOUNTING -----
+
+- Constructor
+- Render
+     <HTML Dummy>
+- component Did Mount - <API Call> - <this.setState()>
+
+# ----- UPDATING ------
+
+- Render
+  - render(API data)
+  - <HTML (new API Data)>
+- component Did Update
+
+# ------- Unmounting -------
+
+- When the component is removed from the webpage/UI/not visible to user/path is changed then, current component will unmount
