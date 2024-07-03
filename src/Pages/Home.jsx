@@ -1,34 +1,23 @@
 import { useEffect, useState } from "react";
-import { SWIGGY_API } from "../utils/constants";
 import { CustomCard } from "../components/CustomCard";
 import { Shimmer } from "../layout/Shimmer";
+import { useRestaurantList } from "../hooks/useRestaurantList";
+import { useOnlineStatus } from "../hooks/useOnlineStatus";
 
 export const Home = () => {
-  const [resturantList, setRestaurantList] = useState([]);
+  const resturantList = useRestaurantList();
   const [filteredResList, setFilteredResList] = useState([]);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    setFilteredResList(resturantList);
+  }, [resturantList]);
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch(SWIGGY_API);
-      const { data } = await res.json();
-
-      console.log(
-        data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-      );
-      setRestaurantList(
-        data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-      );
-      setFilteredResList(
-        data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const onlineStatus = useOnlineStatus();
+  if (!onlineStatus) {
+    return (
+      <h1>You are currently offline, please check your internet connection!</h1>
+    );
+  }
 
   return resturantList.length === 0 ? (
     <Shimmer />
