@@ -40,8 +40,8 @@ body {
 
 .nav-items > ul > li {
   display: flex;
-  padding: 0px 30px;
-  margin: 10px;
+  gap: 10px;
+  padding: 10px;
 }
 
 .card-container {

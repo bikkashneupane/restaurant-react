@@ -2,7 +2,7 @@ import React from "react";
 import User from "../components/User";
 import UserClass from "../components/UserClass";
 
-export const AboutUs = () => {
+const AboutUs = () => {
   return (
     <div>
       <h1>About Us</h1>
@@ -12,3 +12,5 @@ export const AboutUs = () => {
     </div>
   );
 };
+
+export default AboutUs;
