@@ -63,7 +63,6 @@ Microservice Architecture
   - componentDidMount
 
 - componentDidMount is used to call an API call
-- later replaced with useEffect in functional component
 
 - Multiple child components in a parent then this is how the mounting works in react
 
