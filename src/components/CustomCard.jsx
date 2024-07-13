@@ -10,16 +10,19 @@ export const CustomCard = ({ item }) => {
   const imageURL = `${CDN_URL}${item?.info?.cloudinaryImageId}`;
 
   return (
-    <Link to={`/restaurants/${id}`} className="card">
-      <div
-        className="card-image"
-        style={{ backgroundImage: `url(${imageURL})` }}
-      ></div>
-      <div className="card-detail">
-        <h3>{title}</h3>
-        <h4>Cuisines: {cuisines.join(", ")}</h4>
-        <h4>Ratings: {avgRating}</h4>
-        <h4>Delivery time: {deliveryTime} minutes</h4>
+    <Link
+      to={`/restaurants/${id}`}
+      className="bg-gray-100 rounded-lg p-2 max-h-[500px] hover:bg-gray-200"
+    >
+      <img
+        src={imageURL}
+        className="w-full h-1/2 max-h-[200px] object-cover rounded-lg"
+      />
+      <div className="px-1">
+        <h3 className="font-semibold py-2">{title}</h3>
+        <h4>{cuisines.join(", ").slice(0, 25)}...</h4>
+        <h4>{avgRating} stars</h4>
+        <h4>{deliveryTime} minutes</h4>
       </div>
     </Link>
   );

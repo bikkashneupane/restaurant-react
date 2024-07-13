@@ -12,7 +12,6 @@ export const useRestaurantList = () => {
     try {
       const res = await fetch(SWIGGY_API);
       const { data } = await res.json();
-
       setRestaurantList(
         data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );

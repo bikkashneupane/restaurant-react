@@ -1,29 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useRestaurantMenu } from "../hooks/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 export const RestaurantMenu = () => {
+  const [showIndex, setShowIndex] = useState(0);
+
   const { resId } = useParams();
-  const resMenu = useRestaurantMenu(resId);
+  const resInfo = useRestaurantMenu(resId);
+
+  const { name, cuisines, costForTwoMessage } =
+    resInfo[2]?.card?.card?.info || {};
+
+  const categories =
+    resInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      (item) =>
+        item?.card?.card["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
+  console.log("categories:", categories);
+
+  if (!resInfo.length || !categories) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div>
-      <h1>{resMenu[0]?.card?.card?.text}</h1>
-      <p>
-        {resMenu[2]?.card?.card?.info?.cuisines?.join(", ")} -
-        {resMenu[2]?.card?.card?.info?.costForTwoMessage}
+    <div className="text-center">
+      <h1 className="py-4 text-2xl font-bold">{name}</h1>
+      <p className="font-bold text-lg mb-4">
+        {cuisines.join(", ")} - {costForTwoMessage}
       </p>
 
-      <h2>Menu</h2>
-      <ul>
-        {resMenu[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards.map(
-          (item) => (
-            <li key={item?.card?.info?.id}>
-              {item?.card?.info?.name} - Rs.{item?.card?.info?.price / 100}
-            </li>
-          )
-        )}
-      </ul>
+      {/* categories categories */}
+      {categories?.map((item, index) => (
+        <RestaurantCategory
+          key={item?.card?.card?.title}
+          data={item?.card?.card}
+          showItem={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)}
+        />
+      ))}
     </div>
   );
 };

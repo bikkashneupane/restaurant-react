@@ -6,7 +6,7 @@ import { Footer } from "./src/layout/Footer";
 const App = () => {
   return (
     <>
-      <div className="main">
+      <div className="min-h-[90vh]" style={{ minHeight: "90vh" }}>
         <Header />
         <Outlet />
       </div>
