@@ -1,12 +1,22 @@
 import React from "react";
 import { CDN_URL, STAR_SVG } from "../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../redux/slice/cartSlice";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, location }) => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  console.log(cartItems);
+
+  const handleOnAddItem = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
     <div>
-      {items.map((item) => (
+      {items.map((item, index) => (
         <div
-          key={item?.card.info.id}
+          key={`${item?.card.info.id}-${index}`}
           className="border-b-2 border-gray-200 p-2 m-2 text-left"
         >
           <div className="flex justify-between gap-6">
@@ -41,9 +51,28 @@ const ItemList = ({ items }) => {
                 alt=""
                 className="w-full h-full object-cover"
               />
-              <button className="bg-green-600 px-4 py-1 rounded-lg shadow-lg text-white font-bold absolute bottom-0">
-                ADD +
-              </button>
+
+              {location?.pathname === "/cart" ? (
+                <div className="flex justify-between w-full bg-gray-100 px-4 py-1 rounded-lg shadow-lg text-green-500 font-bold absolute bottom-0">
+                  <button>-</button>
+                  <span>
+                    {
+                      cartItems.filter(
+                        (cartItem) =>
+                          cartItem?.card?.info?.id === item?.card?.info?.id
+                      ).length
+                    }
+                  </span>
+                  <button onClick={() => handleOnAddItem(item)}>+</button>
+                </div>
+              ) : (
+                <button
+                  className="bg-green-600 px-4 py-1 rounded-lg shadow-lg text-white font-bold absolute bottom-0"
+                  onClick={() => handleOnAddItem(item)}
+                >
+                  ADD +
+                </button>
+              )}
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ export const STAR_SVG = (
     fill="none"
     role="img"
     aria-hidden="true"
-    strokeColor="rgba(2, 6, 12, 0.92)"
+    strokecolor="rgba(2, 6, 12, 0.92)"
     fillcolor="rgba(2, 6, 12, 0.92)"
   >
     <circle
@@ -35,7 +35,7 @@ export const STAR_SVG = (
         gradientUnits="userSpaceOnUse"
       >
         <stop stopColor="#21973B"></stop>
-        <stop offset="1" stop-color="#128540"></stop>
+        <stop offset="1" stopColor="#128540"></stop>
       </linearGradient>
     </defs>
   </svg>

@@ -8,6 +8,8 @@ import { Error } from "./src/Pages/Error";
 import { Home } from "./src/Pages/Home";
 import { Cart } from "./src/Pages/Cart";
 import { RestaurantMenu } from "./src/components/RestaurantMenu";
+import { Provider } from "react-redux";
+import store from "./src/redux/store";
 // import { Grocery } from "./src/components/Grocery";
 
 // Lazy loading
@@ -63,8 +65,10 @@ const appRouter = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={appRouter}>
-      <App />
-    </RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={appRouter}>
+        <App />
+      </RouterProvider>
+    </Provider>
   </React.StrictMode>
 );

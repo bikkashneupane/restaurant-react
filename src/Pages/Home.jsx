@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CustomCard } from "../components/CustomCard";
 import { Shimmer } from "../layout/Shimmer";
 import { useRestaurantList } from "../hooks/useRestaurantList";
 import { useOnlineStatus } from "../hooks/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 export const Home = () => {
+  const { setLoggedInUser } = useContext(UserContext);
+
   const resturantList = useRestaurantList();
   console.log(resturantList);
+
   const [filteredResList, setFilteredResList] = useState(resturantList || []);
 
   useEffect(() => {
@@ -55,8 +59,15 @@ export const Home = () => {
         >
           Top Rated Restaurant
         </button>
+
+        <input
+          type="text"
+          className="px-4 py-2 shadow-lg rounded-lg"
+          placeholder="Change User name"
+          onChange={(e) => setLoggedInUser(e.target.value)}
+        />
       </div>
-      <div className="px-4 py-6 grid  xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-2">
+      <div className="px-4 py-6 grid  xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-6">
         {filteredResList?.map((item) => (
           <CustomCard key={item?.info?.id} item={item} />
         ))}

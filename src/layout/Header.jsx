@@ -2,17 +2,22 @@ import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { useOnlineStatus } from "../hooks/useOnlineStatus";
-import userContext from "../utils/userContext";
+import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const onlineStatus = useOnlineStatus();
-  const { loggedInUser } = useContext(userContext);
+  const { loggedInUser } = useContext(UserContext);
+  const { items } = useSelector((state) => state.cart);
+  console.log(items);
 
   return (
     <div className="bg-green-50 px-4 flex justify-between items-center shadow-lg mb-2">
       <div className="logo">
-        <img src={LOGO_URL} className="w-32 h-32"></img>
+        <Link to={"/"}>
+          <img src={LOGO_URL} className="w-32 h-32"></img>
+        </Link>
       </div>
       <div className="">
         <ul className="flex justify-between gap-4">
@@ -31,16 +36,23 @@ export const Header = () => {
             <Link to={"/grocery"}>Grocery</Link>
           </li>
           <li>
-            <Link to={"/cart"}>Cart</Link>
+            <Link to={"/cart"} className="font-semibold">
+              Cart{" "}
+              <span className={items?.length && "text-red-500"}>
+                ({items?.length} items)
+              </span>
+            </Link>
           </li>
-          <button
-            style={{ width: "80px" }}
-            onClick={() => {
-              setIsLoggedIn(!isLoggedIn);
-            }}
-          >
-            {isLoggedIn ? "Logout" : "Login"}
-          </button>
+          <li>
+            <button
+              style={{ width: "80px" }}
+              onClick={() => {
+                setIsLoggedIn(!isLoggedIn);
+              }}
+            >
+              {isLoggedIn ? "Logout" : "Login"}
+            </button>
+          </li>
 
           <li>{loggedInUser}</li>
         </ul>

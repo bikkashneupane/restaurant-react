@@ -12,7 +12,7 @@ export const CustomCard = ({ item }) => {
   return (
     <Link
       to={`/restaurants/${id}`}
-      className="bg-gray-100 rounded-lg p-2 max-h-[500px] hover:bg-gray-200"
+      className="bg-gray-100 rounded-lg shadow-lg p-2 max-h-[500px] hover:bg-gray-200"
     >
       <img
         src={imageURL}
