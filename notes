@@ -128,10 +128,14 @@ Microservice Architecture
 5. Configure Pafcel Config file (.parcelrc) to disable default babel transpilation, so we can use babel.config.js configuration (Parcel docs)
 6. Jest Configuration (npx jest --init) -> Creates jest configuration file (jest.config.js)
 7. Install jsdom library (npm i -D jest-environment-jsdom)
+8. Install @babel/preset-react to make jsx work in test cases => (npm i -D @babel/preset-react),
+9. Include @babel/preset-react in babel.config.js file ==> ["@babel/preset-react", { runtime:"automatic" }],
+10. Install @testing-library/jest-dom
+11. For Intellisense install @types/jest ==> npm i -D @types/jest
 
-8. **test** (test folder)
-9. Test files Examples
-   - Headers.test.js
-   - Headers.test.ts
-   - Headers.spec.js
-   - Headers.spec.ts
+12. **test** (test folder)
+13. Test files Examples
+    - Headers.test.js
+    - Headers.test.ts
+    - Headers.spec.js
+    - Headers.spec.ts
