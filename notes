@@ -139,3 +139,5 @@ Microservice Architecture
     - Headers.test.ts
     - Headers.spec.js
     - Headers.spec.ts
+14. test() / it() function for testing => both are same
+15. describe() function to group the test() cases

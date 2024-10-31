@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { CDN_URL } from "../utils/constants";
 
-export const CustomCard = ({ item }) => {
+export const RestaurantCard = ({ item }) => {
   const id = item?.info?.id;
   const title = item?.info?.name;
   const cuisines = item?.info?.cuisines;
   const avgRating = item?.info?.avgRating;
   const deliveryTime = item?.info?.sla?.deliveryTime;
   const imageURL = `${CDN_URL}${item?.info?.cloudinaryImageId}`;
+
+  // console.log(item);
 
   return (
     <Link

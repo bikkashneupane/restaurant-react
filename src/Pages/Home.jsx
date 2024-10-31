@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { CustomCard } from "../components/CustomCard";
+import { RestaurantCard } from "../components/RestaurantCard";
 import { Shimmer } from "../layout/Shimmer";
 import { useRestaurantList } from "../hooks/useRestaurantList";
 import { useOnlineStatus } from "../hooks/useOnlineStatus";
@@ -69,7 +69,7 @@ export const Home = () => {
       </div>
       <div className="px-4 py-6 grid  xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-6">
         {filteredResList?.map((item) => (
-          <CustomCard key={item?.info?.id} item={item} />
+          <RestaurantCard key={item?.info?.id} item={item} />
         ))}
       </div>
     </>
