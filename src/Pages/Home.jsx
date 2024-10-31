@@ -9,7 +9,7 @@ export const Home = () => {
   const { setLoggedInUser } = useContext(UserContext);
 
   const resturantList = useRestaurantList();
-  console.log(resturantList);
+  // console.log(resturantList);
 
   const [filteredResList, setFilteredResList] = useState(resturantList || []);
 
@@ -23,7 +23,7 @@ export const Home = () => {
       <h1>You are currently offline, please check your internet connection!</h1>
     );
   }
-  return filteredResList?.length === 0 ? (
+  return resturantList?.length === 0 ? (
     <Shimmer />
   ) : (
     <>

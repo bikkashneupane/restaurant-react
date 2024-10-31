@@ -112,3 +112,26 @@ Microservice Architecture
 # ------- Unmounting -------
 
 - When the component is removed from the webpage/UI/not visible to user/path is changed then, current component will unmount
+
+# Types of Testing (developer)
+
+- Unit Testing
+- Integration Testing
+- End to End Testing (e2e testing)
+
+# Setting up testing in our app
+
+1. Install React-Testing-Library (npm i -D @testing-library/react)
+2. Install Jest (npm i -D jest)
+3. Install Babel and its dependencies (Babel docs) (npm i -D babel-jest @babel/core @babel/preset-env)
+4. Configure babel (babel.config.js)
+5. Configure Pafcel Config file (.parcelrc) to disable default babel transpilation, so we can use babel.config.js configuration (Parcel docs)
+6. Jest Configuration (npx jest --init) -> Creates jest configuration file (jest.config.js)
+7. Install jsdom library (npm i -D jest-environment-jsdom)
+
+8. **test** (test folder)
+9. Test files Examples
+   - Headers.test.js
+   - Headers.test.ts
+   - Headers.spec.js
+   - Headers.spec.ts

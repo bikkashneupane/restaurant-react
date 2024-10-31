@@ -10,7 +10,6 @@ export const Header = () => {
   const onlineStatus = useOnlineStatus();
   const { loggedInUser } = useContext(UserContext);
   const { items } = useSelector((state) => state.cart);
-  console.log(items);
 
   return (
     <div className="bg-green-50 px-4 flex justify-between items-center shadow-lg mb-2">
