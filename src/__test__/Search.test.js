@@ -13,7 +13,8 @@ global.fetch = jest.fn(() => {
   });
 });
 
-it("Should render Home Component with search Input Field", async () => {
+it("Should Search Burger Restaurant List from search Input", async () => {
+  // Whenever you are making a api call/ state update, we need to wrap the render inside a act function which returns a promise so it needs to be async/await
   await act(async () =>
     render(
       <BrowserRouter>
@@ -37,5 +38,29 @@ it("Should render Home Component with search Input Field", async () => {
   // screen should load 4 burgers result
   const cardsAfterSearch = screen.getAllByTestId("resCard");
 
-  expect(cardsAfterSearch.length).toBe(3);
+  expect(cardsAfterSearch.length).toBe(2);
+});
+
+it("Should render top rated restauant on button click", async () => {
+  await act(async () =>
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    )
+  );
+
+  const resBeforeFilter = screen.getAllByTestId("resCard");
+
+  expect(resBeforeFilter.length).toBe(20);
+
+  const topRatedButton = screen.getByRole("button", {
+    name: "Top Rated Restaurant",
+  });
+
+  fireEvent.click(topRatedButton);
+
+  const resAfterFilter = screen.getAllByTestId("resCard");
+
+  expect(resAfterFilter.length).toBe(13);
 });

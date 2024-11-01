@@ -141,6 +141,7 @@ Microservice Architecture
     - Headers.spec.ts
 14. test() / it() function for testing => both are same
 15. describe() function to group the test() cases
+16. Whenever you are making a mock api call/ state update in test, we need to wrap the render inside a act function which returns a promise so it needs to be async/await
 
 # Continuous watch test without stopping (just like nodemon)
 

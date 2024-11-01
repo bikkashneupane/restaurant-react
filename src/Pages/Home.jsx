@@ -9,31 +9,16 @@ import RestaurantCard from "../components/RestaurantCard";
 
 export const Home = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [resturantList, setRestaurantList] = useState([]);
-  const [filteredResList, setFilteredResList] = useState([]);
+
+  const resturantList = useRestaurantList();
+
+  const [filteredResList, setFilteredResList] = useState(resturantList || []);
 
   const { setLoggedInUser } = useContext(UserContext);
 
-  // const resturantList = useRestaurantList();
-
   useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const res = await fetch(SWIGGY_API);
-      const { data } = await res.json();
-      setRestaurantList(
-        data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-      );
-      setFilteredResList(
-        data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    setFilteredResList(resturantList);
+  }, [resturantList]);
 
   const handleOnChange = (e) => {
     const { value } = e.target;
@@ -41,11 +26,14 @@ export const Home = () => {
   };
 
   const handleOnSearch = () => {
-    setFilteredResList(
-      resturantList.filter((item) =>
-        item.info.name.toLowerCase().includes(searchInput.toLowerCase())
+    const filteredValue = resturantList?.filter((item) =>
+      item?.info?.cuisines?.some((cuisine) =>
+        cuisine.toLowerCase().includes(searchInput.toLowerCase())
       )
     );
+
+    // console.log(filteredValue);
+    setFilteredResList(filteredValue);
   };
 
   const onlineStatus = useOnlineStatus();
@@ -54,6 +42,7 @@ export const Home = () => {
       <h1>You are currently offline, please check your internet connection!</h1>
     );
   }
+
   return resturantList?.length === 0 ? (
     <Shimmer />
   ) : (
