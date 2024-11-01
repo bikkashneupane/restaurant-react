@@ -36,10 +36,7 @@ export const Header = () => {
           </li>
           <li>
             <Link to={"/cart"} className="font-semibold">
-              Cart{" "}
-              <span className={items?.length && "text-red-500"}>
-                ({items?.length} items)
-              </span>
+              Cart ({items?.length} items)
             </Link>
           </li>
           <li>

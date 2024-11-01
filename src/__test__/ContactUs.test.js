@@ -4,7 +4,23 @@ import { ContactUs } from "../Pages/ContactUs";
 
 // describe/ test/it function takes 2 arguments: 1. String describing the test case 2. callback function which has test case
 describe("Contact Us Test Cases", () => {
-  test("This should load Contact us component", () => {
+  // beforeAll(()=>{
+  //   console.log("Before All the tests")
+  // })
+
+  // beforeEach(()=>{
+  //   console.log("Before Each Test, Helper function, helpful if cleanup is needed before each test")
+  // })
+
+  // afterEach(()=>{
+  //   console.log("After Each Test")
+  // })
+
+  // afterAll(()=>{
+  //   console.log("After All the test cases")
+  // })
+
+  it("This should load Contact us component", () => {
     render(<ContactUs />);
 
     const heading = screen.getByRole("heading");
@@ -13,7 +29,7 @@ describe("Contact Us Test Cases", () => {
     expect(heading).toBeInTheDocument();
   });
 
-  test("Should load button inside Contact component", () => {
+  it("Should load button inside Contact component", () => {
     render(<ContactUs />);
 
     const button = screen.getByRole("button");

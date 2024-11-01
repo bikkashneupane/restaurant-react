@@ -4,7 +4,7 @@ import { useRestaurantMenu } from "../hooks/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 
 export const RestaurantMenu = () => {
-  const [showIndex, setShowIndex] = useState(0);
+  const [showIndex, setShowIndex] = useState(null);
 
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);

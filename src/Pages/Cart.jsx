@@ -9,7 +9,7 @@ export const Cart = () => {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
 
-  console.log(location);
+  // console.log(location);
 
   const handleOnClearCart = () => {
     dispatch(clearCart());
@@ -33,7 +33,7 @@ export const Cart = () => {
           </div>
         </div>
       ) : (
-        ""
+        <h1 className="text-center mt-10 font-semibold">Cart is Empty</h1>
       )}
     </div>
   );
