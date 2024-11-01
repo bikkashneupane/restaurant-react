@@ -2,8 +2,6 @@ import React from "react";
 import ItemList from "./ItemList";
 
 const RestaurantCategory = ({ showItem, data, setShowIndex }) => {
-  console.log(data);
-
   return (
     <div className="flex justify-center">
       {/* Header */}

@@ -1,19 +1,15 @@
-import { Link } from "react-router-dom";
 import { CDN_URL } from "../utils/constants";
 
-export const RestaurantCard = ({ item }) => {
-  const id = item?.info?.id;
-  const title = item?.info?.name;
-  const cuisines = item?.info?.cuisines;
-  const avgRating = item?.info?.avgRating;
-  const deliveryTime = item?.info?.sla?.deliveryTime;
-  const imageURL = `${CDN_URL}${item?.info?.cloudinaryImageId}`;
+const RestaurantCard = ({ item }) => {
+  const { title, cuisines, avgRating } = item;
+  const deliveryTime = item?.sla?.deliveryTime;
+  const imageURL = `${CDN_URL}${item?.cloudinaryImageId}`;
 
   // console.log(item);
 
   return (
-    <Link
-      to={`/restaurants/${id}`}
+    <div
+      data-testid="resCard"
       className="bg-gray-100 rounded-lg shadow-lg p-2 max-h-[500px] hover:bg-gray-200"
     >
       <img
@@ -26,6 +22,8 @@ export const RestaurantCard = ({ item }) => {
         <h4>{avgRating} stars</h4>
         <h4>{deliveryTime} minutes</h4>
       </div>
-    </Link>
+    </div>
   );
 };
+
+export default RestaurantCard;

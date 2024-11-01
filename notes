@@ -141,3 +141,7 @@ Microservice Architecture
     - Headers.spec.ts
 14. test() / it() function for testing => both are same
 15. describe() function to group the test() cases
+
+# Continuous watch test without stopping (just like nodemon)
+
+- Add this script to package.json file : ===> "watch-test": "jest --watch"

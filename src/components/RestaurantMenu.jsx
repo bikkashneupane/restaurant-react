@@ -19,7 +19,7 @@ export const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-  console.log("categories:", categories);
+  // console.log("categories:", categories);
 
   if (!resInfo.length || !categories) {
     return <div>Loading...</div>;
